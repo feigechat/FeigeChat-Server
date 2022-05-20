@@ -1,110 +1,29 @@
-# CoffeeChat
+# FeigeChat-Server
 
-opensource im with server(go) and client(flutter+swift)
+a microservice architecture im(chat) server with golang, suport docker & k8s.
 
-## News
+开源飞鸽IM服务端，使用微服务分布式架构，基于go语言，同时支持k8s和docker compose部署。
 
-有网友在Issues询问后续更新一事，这里回复一下：
-> 今年事情比较多，所以进展十分缓慢，会不会放弃这个项目我也不能肯定，主要是作者精力有限，请大家原谅。发起这个项目的初衷，是为了更深入的学习IM服务端开发，如果有更好的开源go语言实现的im项目，我可能会考虑作为Contributor参与其中。
+特点：
+- `简化设计`：除了WebSocket推送消息（s2c）使用protobuf协议，其他全部使用HTTP API接口，包括发消息（c2s），方便研究学习和交流。
+- `写扩散消息存储`：优先使用写扩散模式（发一个消息，假设群有500成员，存储500份），降低消息同步复杂度，故限制只支持500人以下群聊。
+- `微服务分布式架构`：按照理论百万级在线，1W条消息/秒设计和优化架构。
+- `k8s动态扩容`：实验特性，会定期在拥有3个节点的k8s集群上部署和测试。
 
-最后，放出最近的一些动态以感谢大家的关心。
+技术栈：
+- go 1.18
+- kafka
+- grpc
+- protobuf
+- consul
+- mongodb：离线消息存储，为方便使用 `timeline` 同步消息给客户端
+- mysql：持久化消息，用于消息漫游
+- redis
 
-最新动态：
-- 至今: 生命不息，探索不止💪💪
-- 2022/04/10：制定Monthly Release计划，每个月至少要保证一次Release
-- 2021/08: 作者最近在考虑跳槽，故精力主要放在研究[OpenIM](https://github.com/OpenIMSDK/Open-IM-Server)，学习Kafka，微服务，收件箱，Etcd，Docker，K8S等使用，提升技术深度。
-- 2021/03 - 07: 开发QT客户端和C++跨平台SDK，受限于精力进展缓慢。
-- 2021/02: 使用sketch设计win+mac客户端界面。
-
-总结：
-- `2022`: 再出发
-- `2021`: 主要精力在探索百万级的架构，C++跨平台SDK，QT，Go微服务，Docker，Etcd等等，coffeechat几乎没有更新
-- `2020`: 这一年coffeechat不断完善，作者主要在学习ios开发，实现简单ios app
-- `2019/08`: coffeechat诞生，学习flutter，实现简单flutter客户端，后续因为flutter聊天界面下拉感觉效果不理想放弃
-
-## Preview
-
-### flutter
-
-see [CoffeeChat-Flutter](https://github.com/xmcy0011/CoffeeChat-Flutter) 暂不维护，仅供参考。
-
-### swift
-![screenshot](./images/swift/screenshot.png)  
-
-## Features
-
-### 设计
-
-- [x] 架构设计：参考瓜子 IM
-- [x] 协议设计：参考网易云 IM、环信、TeamTalk
-- [x] 数据库设计
-- [x] 消息分表存储设计
-- [x] IM 消息 ID 生成设计
-
-### 单聊群聊
-
-- [x] flutter 客户端
-- [x] 单聊
-- [x] 消息格式
-    - [x] 文本
-    - [ ] 表情
-    - [ ] 图片
-- [x] 会话列表
-- [x] 消息存储
-- [x] 历史消息
-- [x] 漫游消息（用户切换到任何设备都可以读取到最近的历史消息）
-- [ ] 离线消息（用户离线重新上线后收到最近 30 天的未读消息）
-- [x] 未读消息计数
-- [ ] 消息推送(APNS)
-- [ ] 群聊
-- [ ] 群最高人数：200
-- [ ] 群管理：群主、加人、踢人
-- [ ] 群消息免打扰
-- [ ] 群成员管理
-
-### 服务端特有
-
-- [ ] consul注册中心
-- [ ] 分布式配置（nacos、etcd...）
-- [x] dockerfile & docker compose
-- [ ] admin后台和web界面，简化安装（参考wordpress）
-
-## 客户端特有
-
-- [ ] 消息推送提醒（系统通知栏消息提醒）
-- [ ] 消息转发
-- [ ] 网络连接状态
-- [ ] 图片管理器
-- [ ] 查找聊天记录
-- [ ] 消息同步缓存
-- [x] 会话同步缓存
-- [ ] 头像同步缓存
-- [ ] 未读计数桌面角标
-- [ ] 免打扰模式
-- [ ] 图片压缩
-
-### 特色功能
-
-- [ ] 阅后即焚
-- [ ] 撤回
-- [ ] 正在输入
-- [ ] 已读回执（用户发送消息，获取对方是否已读状态 ）
-- [ ] 多终端已读同步（同个产品多终端情况下，同步消息已读未读的状态）
-- [ ] 端到端加密
-- [ ] 高清语音消息
-- [ ] 文件上传下载
-- [x] 语音通话(声网FlutterSDK)
-- [ ] 视频通话
-- [ ] electron 跨平台桌面客户端
-- [x] flutter 跨平台移动端
-- [ ] swift/iOS 客户端+SDK
-
-### 聊天机器人功能
-
-- [ ] 图灵机器人接入
-- [ ] 小爱机器人接入
-- [x] 思知机器人接入
-- [x] 微信机器人接入
+部署方式：
+- centos 7
+- docker compose
+- k8s
 
 ## Architecture
 
@@ -168,4 +87,4 @@ email：xmcy0011@sina.com
 
 ## LICENSE
 
-CoffeeChat is provided under the [mit license](https://github.com/xmcy0011/CoffeeChat/blob/master/LICENSE).
+FeigeChat is provided under the [mit license](https://github.com/xmcy0011/CoffeeChat/blob/master/LICENSE).
