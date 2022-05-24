@@ -10,7 +10,7 @@ a microservice architecture im(chat) server with golang, suport docker & k8s.
 - `微服务分布式架构`：按照理论百万级在线，1W条消息/秒设计和优化架构。
 - `k8s动态扩容`：实验特性，会定期在拥有3个节点的k8s集群上部署和测试。
 
-技术栈：
+<!-- 技术栈：
 - go 1.18
 - kafka
 - grpc
@@ -18,7 +18,24 @@ a microservice architecture im(chat) server with golang, suport docker & k8s.
 - consul
 - mongodb：离线消息存储，为方便使用 `timeline` 同步消息给客户端
 - mysql：持久化消息，用于消息漫游
-- redis
+- redis -->
+
+技术栈：
+- 微服务框架: [kratos v2](https://github.com/go-kratos)，内置了如下组件：
+    - 日志：[zap(uber)](https://github.com/uber-go/zap)
+    - 服务注册和发现：[consul](github.com/hashicorp/consul/api)
+    - 分布式链路追踪：[otel](go.opentelemetry.io/otel/trace)
+    - 进程间通信：[grpc](google.golang.org/grpc)
+    - 协议：[protobuf3](google.golang.org/protobuf)
+    - proto转换json格式：[protojson](google.golang.org/protobuf/encoding/protojson)
+    - 服务监控：[prometheus](github.com/prometheus/client_golang)
+- 数据库&中间件
+    - orm框架: [ent(facebook)](https://github.com/ent/ent)
+    - redis: [go-redis](github.com/go-redis/redis/v8)，用的最多的go redis客户端之一，支持单节点、集群、哨兵等多种模式
+    - kafka：[sarama(shopify)](github.com/Shopify/sarama)，基于go原生实现的kafka client，使用最多的包，没有之一
+- 其他：
+    - websocket: [gorilla/websocket](github.com/gorilla/websocket)，import最多的库之一
+    - unit test: [testify.reqquire](github.com/stretchr/testify/require)、[testify.assert](github.com/stretchr/testify/assert) 更优雅的写unit test
 
 部署方式：
 - centos 7
