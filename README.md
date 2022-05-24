@@ -28,12 +28,12 @@ a microservice architecture im(chat) server with golang, suport docker & k8s.
 ## Architecture
 
 模块架构:  
-![模块架构](https://raw.githubusercontent.com/xmcy0011/CoffeeChat/master/images/structure-v2.png)
+![模块架构](https://raw.githubusercontent.com/FeigeChat/FeigeChat-Server/master/images/structure-v2.png)
 
 单聊模块交互图:
-![单聊](https://raw.githubusercontent.com/xmcy0011/CoffeeChat/master/images/seq-c2c.png)
+![单聊](https://raw.githubusercontent.com/FeigeChat/FeigeChat-Server/master/images/seq-c2c.png)
 
-See More [architecture](https://github.com/xmcy0011/CoffeeChat/blob/master/docs/02-%E6%9E%B6%E6%9E%84%E5%92%8C%E5%8D%8F%E8%AE%AE%E8%AE%BE%E8%AE%A1.md)
+See More [architecture](https://github.com/FeigeChat/FeigeChat-Server/blob/master/docs/02-%E6%9E%B6%E6%9E%84%E5%92%8C%E5%8D%8F%E8%AE%AE%E8%AE%BE%E8%AE%A1.md)
 
 ## Quick Start
 
@@ -41,27 +41,27 @@ See More [architecture](https://github.com/xmcy0011/CoffeeChat/blob/master/docs/
 
 1. 启动Server（要求安装docker desktop >= 4.0.1）:
 ```bash
-$ git clone https://github.com/xmcy0011/CoffeeChat.git
-$ cd CoffeeChat/server
+$ git clone https://github.com/FeigeChat/FeigeChat-Server.git
+$ cd FeigeChat-Server/server
 # 从代码编译docker镜像，安装mysql,redis等依赖，并自动初始化mysql数据
 $ docker-compose.yml up -d
 ```
-2. 编译客户端。推荐iOS客户端（模拟器选择iphone 11），请移步：[client](https://github.com/xmcy0011/CoffeeChat/blob/master/client/cc_flutter_app/README.md)
+2. 编译客户端。推荐iOS客户端（模拟器选择iphone 11），请移步：[client](https://github.com/FeigeChat/FeigeChat-Server/blob/master/client/cc_flutter_app/README.md)
 3. iOS模拟器和app启动后，点击“注册”，更改服务器IP地址为本机IP（不需要输入端口），注册成功后，登录即可。
 4. 内置了2个机器人（思知和微信）和3个好友，可以测试聊天功能。
 
 更多细节，请移步：
-- [client](https://github.com/xmcy0011/CoffeeChat/blob/master/client/cc_flutter_app/README.md)
-- [server](https://github.com/xmcy0011/CoffeeChat/blob/master/server/src/README.md)
+- [client](https://github.com/FeigeChat/FeigeChat-Server/blob/master/client/cc_flutter_app/README.md)
+- [server](https://github.com/FeigeChat/FeigeChat-Server/blob/master/server/src/README.md)
 
 ### Document
 
-1. [产品介绍](https://github.com/xmcy0011/CoffeeChat/blob/master/docs/01-%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D.md)
-2. [架构和协议设计](https://github.com/xmcy0011/CoffeeChat/blob/master/docs/02-%E6%9E%B6%E6%9E%84%E5%92%8C%E5%8D%8F%E8%AE%AE%E8%AE%BE%E8%AE%A1.md)
-3. [消息分表存储](https://github.com/xmcy0011/CoffeeChat/blob/master/docs/03-%E6%B6%88%E6%81%AF%E5%88%86%E8%A1%A8%E5%AD%98%E5%82%A8.md)
-4. [IM 消息 ID 生成原理和常见技术难点](https://github.com/xmcy0011/CoffeeChat/blob/master/docs/04_IM%e5%b8%b8%e8%a7%81%e6%8a%80%e6%9c%af%e9%9a%be%e7%82%b9.md)
-5. [进度计划](https://github.com/xmcy0011/CoffeeChat/blob/master/docs/05-%E8%BF%9B%E5%BA%A6%E8%AE%A1%E5%88%92.md)
-6. [MQ在IM中的实践和选型](https://github.com/xmcy0011/CoffeeChat/blob/master/docs/06_MQ%e5%9c%a8IM%e4%b8%ad%e7%9a%84%e5%ae%9e%e8%b7%b5.md)
+1. [产品介绍](https://github.com/FeigeChat/FeigeChat-Server/blob/master/docs/01-%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D.md)
+2. [架构和协议设计](https://github.com/FeigeChat/FeigeChat-Server/blob/master/docs/02-%E6%9E%B6%E6%9E%84%E5%92%8C%E5%8D%8F%E8%AE%AE%E8%AE%BE%E8%AE%A1.md)
+3. [消息分表存储](https://github.com/FeigeChat/FeigeChat-Server/blob/master/docs/03-%E6%B6%88%E6%81%AF%E5%88%86%E8%A1%A8%E5%AD%98%E5%82%A8.md)
+4. [IM 消息 ID 生成原理和常见技术难点](https://github.com/FeigeChat/FeigeChat-Server/blob/master/docs/04_IM%e5%b8%b8%e8%a7%81%e6%8a%80%e6%9c%af%e9%9a%be%e7%82%b9.md)
+5. [进度计划](https://github.com/FeigeChat/FeigeChat-Server/blob/master/docs/05-%E8%BF%9B%E5%BA%A6%E8%AE%A1%E5%88%92.md)
+6. [MQ在IM中的实践和选型](https://github.com/FeigeChat/FeigeChat-Server/blob/master/docs/06_MQ%e5%9c%a8IM%e4%b8%ad%e7%9a%84%e5%ae%9e%e8%b7%b5.md)
 
 更多文章请移步：
 - [CoffeeChat-GitBook](https://xmcy0011.github.io/CoffeeChat-GitBook/)
@@ -87,4 +87,4 @@ email：xmcy0011@sina.com
 
 ## LICENSE
 
-FeigeChat is provided under the [mit license](https://github.com/xmcy0011/CoffeeChat/blob/master/LICENSE).
+FeigeChat is provided under the [mit license](https://github.com/FeigeChat/FeigeChat-Server/blob/master/LICENSE).
